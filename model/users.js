@@ -1,9 +1,9 @@
 "use strict";
-//const jwt = require("jsonwebtoken");
+const jwt = require("jsonwebtoken");
 const bcrypt = require('bcrypt');
 const { parse, serialize } = require("../utils/json");
 //var escape = require("escape-html");
-//const jwtSecret = "ilovemypizza!";
+const jwtSecret = "ilovemypizza!";
 const LIFETIME_JWT = 24 * 60 * 60 * 1000; // in ms : 24 * 60 * 60 * 1000 = 24h
 
 const jsonDbPath = __dirname + "/../data/users.json";
