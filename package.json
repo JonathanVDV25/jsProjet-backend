@@ -9,11 +9,7 @@
     "bcrypt": "^5.0.1",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
-<<<<<<< HEAD
     "express": "^4.16.4",
-=======
-    "express": "~4.16.1",
->>>>>>> f0c3e15538373f8a4f4d1e1ce9c135450d1e1ea4
     "jsonwebtoken": "^8.5.1",
     "morgan": "~1.9.1"
   }
