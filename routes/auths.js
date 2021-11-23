@@ -1,10 +1,15 @@
 var express = require("express");
 var router = express.Router();
+const jwt = require("jsonwebtoken");
+const jwtSecret = "ilovemyjavascript!";
+const LIFETIME_JWT = 24 * 60 * 60 * 1000; // in seconds // 24 * 60 * 60 * 1000 = 24h
 const { Users } = require("../model/users");
 const userModel = new Users();
 
+//const { authorize } = require("../utils/auths");
+
 /* Register a user : POST /auths/register */
-router.post("/register", async function (req, res, next) {
+router.post("/register", function (req, res, next) {
   // Send an error code '400 Bad request' if the body parameters are not valid
   if (
     !req.body ||
@@ -13,7 +18,7 @@ router.post("/register", async function (req, res, next) {
   )
     return res.status(400).end();
 
-  const authenticatedUser = await userModel.register(
+  const authenticatedUser = userModel.register(
     req.body.username,
     req.body.password
   );
@@ -24,7 +29,7 @@ router.post("/register", async function (req, res, next) {
 });
 
 /* login a user : POST /auths/login */
-router.post("/login", async function (req, res, next) {
+router.post("/login", function (req, res, next) {
   // Send an error code '400 Bad request' if the body parameters are not valid
   if (
     !req.body ||
@@ -33,7 +38,7 @@ router.post("/login", async function (req, res, next) {
   )
     return res.status(400).end();
 
-  const authenticatedUser = await userModel.login(
+  const authenticatedUser = userModel.login(
     req.body.username,
     req.body.password
   );
