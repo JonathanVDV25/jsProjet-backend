@@ -1,12 +1,25 @@
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
+var cookieSession = require('cookie-session');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/auths');
 
 var app = express();
+
+let expiryDate = new Date(Date.now() + 60 * 60 * 1000); // 1h;
+app.use(
+  cookieSession({
+    name: "user",
+    keys: ["689HiHoveryDi79*"],
+    cookie: {
+      httpOnly: true,
+      expires: expiryDate,
+    },
+  })
+);
 
 app.use(logger('dev'));
 app.use(express.json());
