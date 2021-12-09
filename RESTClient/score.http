@@ -1,18 +1,18 @@
 @baseUrl = http://localhost:3000
 
-######### NORMAL OPERATION  ###########
+# ######### NORMAL OPERATION  ###########
 
-### Login the default admin & define a request variable
-# @name admin
-POST {{baseUrl}}/auths/login
-Content-Type: application/json
+# ### Login the default admin & define a request variable
+# # @name admin
+# POST {{baseUrl}}/auths/login
+# Content-Type: application/json
 
-{
-    "username":"admin",
-    "password":"admin"
-}
-### get the admin token
-@adminToken = {{admin.response.body.token}}
+# {
+#     "username":"admin",
+#     "password":"admin"
+# }
+# ### get the admin token
+# @adminToken = {{admin.response.body.token}}
 
 ### Read all scores
 GET http://localhost:3000/scores
@@ -27,15 +27,16 @@ Content-Type: application/json
 
 {
     "name":"jonathan",
-    "score":250
+    "distance":250
 }
 
 ### Update the score identified by the name jonathan
-PUT http://localhost:3000/scores/2
+PUT http://localhost:3000/scores/jonathan
 Content-Type: application/json
 
 {
-    "name":"jonathan"
+    "name":"jonathan",
+    "distance":360
 }
 
 ### Add a score with dangerous chars
@@ -44,5 +45,6 @@ Content-Type: application/json
 
 {
     "name":"<img src=\"#\" onerror=\"alert('You have been hacked !')\">",
-    "score":360
+    "distance":360
 }
+//BUG : celui-là on peut l'ajouter à l'infini !!!!
