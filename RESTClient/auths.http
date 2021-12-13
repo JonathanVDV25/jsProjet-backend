@@ -1,16 +1,19 @@
+######### NORMAL OPERATION  ###########
 # dont forget npm install jsonwebtoken
-
 ### Login the default admin
 POST http://localhost:3000/users/login
 Content-Type: application/json
+
 {
     "username":"admin",
     "password":"admin"
 }
 
+
 ### Create the manager user
 POST http://localhost:3000/users/register
 Content-Type: application/json
+
 {
     "username":"manager",
     "password":"manager"
@@ -19,6 +22,7 @@ Content-Type: application/json
 ### Login the manager
 POST http://localhost:3000/users/login
 Content-Type: application/json
+
 {
     "username":"manager",
     "password":"manager"

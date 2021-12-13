@@ -1,6 +1,6 @@
 {
-  "name": "restful-api-essentials-step8",
-  "description": "RESTful API : Sauvegarde du username et du token au sein d’un cookie côté client",
+  "name": "projet-js",
+  "description": "Jeu de platforme avec une mécanique de temps",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -25,7 +25,7 @@
     "nodemon": "^2.0.13"
   },
   "author": {
-    "name": "e-baron"
+    "name": "Loic Hernaut, Nicolas Dedoyard, Laurent Vandermeersch, Jonathan Van de Vyver"
   },
   "license": "CC-BY-SA-4.0"
 }
