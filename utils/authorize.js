@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-const jwtSecret = "ilovemypizza!";
+const jwtSecret = "ChronoRun";
 
 const { Users } = require("../model/users");
 const userModel = new Users();
