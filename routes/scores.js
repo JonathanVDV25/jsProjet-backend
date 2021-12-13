@@ -1,6 +1,7 @@
 var express = require("express");
 const { Scores } = require("../model/score");
 const { authorizeFromCookie } = require("../utils/authorize");
+var escape = require("escape-html");
 
 var router = express.Router();
 const scoreModel = new Scores();
@@ -29,15 +30,16 @@ router.get("/:name", function (req, res) {
 // authorize Middleware : it authorize any authenticated user and load the user in req.user
 router.post("/", authorizeFromCookie, function (req, res) {
   console.log("POST /scores");
+
+  var name = escape(req.body.name)
     // Send an error code '400 Bad request' if the body parameters are not valid
   if (
     !req.body ||
     (req.body.hasOwnProperty("name") && req.body.name.length === 0) ||
     (req.body.hasOwnProperty("distance") && req.body.distance.length === 0) ||
-    (scoreModel.getOne(req.body.name)) // Renvoie une erreur si le nom est déjà présent !
+    (scoreModel.getOne(name)) // Renvoie une erreur si le nom est déjà présent !
   )
     return res.status(400).end();
-    console.log(req.body.name);
 
   //if (req.user.username !== "admin") return res.status(403).end();
 

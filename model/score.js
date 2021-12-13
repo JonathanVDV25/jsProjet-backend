@@ -8,7 +8,7 @@ const jsonDbPath = __dirname + "/../data/scores.json";
 // Default score menu
 const defaultScores = [
   {
-    name: "Score de base a battre",
+    name: "Score_De_Base_A_Battre",
     distance: 200,
   },
 ];
@@ -29,7 +29,7 @@ class Scores {
   }
 
   /**
-   * Returns the scores identified by id
+   * Returns the scores identified by the name
    * @param {object} name - name of the player to find
    * @returns {object} the score found or undefined if the id does not lead to a score
    */

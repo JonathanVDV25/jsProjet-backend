@@ -47,4 +47,4 @@ Content-Type: application/json
     "name":"<img src=\"#\" onerror=\"alert('You have been hacked !')\">",
     "distance":360
 }
-//BUG : celui-là on peut l'ajouter à l'infini !!!!
+
