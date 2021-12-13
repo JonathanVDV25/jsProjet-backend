@@ -30,7 +30,6 @@ router.get("/:name", function (req, res) {
 // authorize Middleware : it authorize any authenticated user and load the user in req.user
 router.post("/", authorizeFromCookie, function (req, res) {
   console.log("POST /scores");
-
   var name = escape(req.body.name)
     // Send an error code '400 Bad request' if the body parameters are not valid
   if (
@@ -42,9 +41,7 @@ router.post("/", authorizeFromCookie, function (req, res) {
     return res.status(400).end();
 
   //if (req.user.username !== "admin") return res.status(403).end();
-
   const score = scoreModel.addOne(req.body);
-
   return res.json(score);
 });
 
@@ -62,7 +59,6 @@ router.put("/:name", function (req, res) {
     return res.status(400).end();
 
   //if (req.user.username !== "admin") return res.status(403).end();
-
   const score = scoreModel.updateOne(req.params.name, req.body);
   // Send an error code 'Not Found' if the score was not found :
   if (!score) return res.status(404).end();

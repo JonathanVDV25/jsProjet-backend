@@ -1,30 +1,14 @@
 @baseUrl = http://localhost:3000
 
-# ######### NORMAL OPERATION  ###########
-
-# ### Login the default admin & define a request variable
-# # @name admin
-# POST {{baseUrl}}/auths/login
-# Content-Type: application/json
-
-# {
-#     "username":"admin",
-#     "password":"admin"
-# }
-# ### get the admin token
-# @adminToken = {{admin.response.body.token}}
-
 ### Read all scores
 GET http://localhost:3000/scores
 
 ### Read score identified by name jonathan
 GET http://localhost:3000/scores/jonathan
 
-
 ### Create a score
 POST {{baseUrl}}/scores
 Content-Type: application/json
-
 {
     "name":"jonathan",
     "distance":250
@@ -33,7 +17,6 @@ Content-Type: application/json
 ### Update the score identified by the name jonathan
 PUT http://localhost:3000/scores/jonathan
 Content-Type: application/json
-
 {
     "name":"jonathan",
     "distance":360
@@ -42,9 +25,7 @@ Content-Type: application/json
 ### Add a score with dangerous chars
 POST {{baseUrl}}/scores
 Content-Type: application/json
-
 {
     "name":"<img src=\"#\" onerror=\"alert('You have been hacked !')\">",
     "distance":360
 }
-

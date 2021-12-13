@@ -3,11 +3,9 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require('bcrypt');
 const { parse, serialize } = require("../utils/json");
 //var escape = require("escape-html");
-const jwtSecret = "ilovemypizza!";
+const jwtSecret = "ChronoRun";
 const LIFETIME_JWT = 24 * 60 * 60 * 1000; // in ms : 24 * 60 * 60 * 1000 = 24h
-
 const jsonDbPath = __dirname + "/../data/users.json";
-
 const saltRounds = 10;
 
 // Default data
@@ -17,12 +15,6 @@ const defaultItems = [
     password: "$2b$10$RqcgWQT/Irt9MQC8UfHmjuGCrQkQNeNcU6UtZURdSB/fyt6bMWARa",//"admin",
   },
 ];
-// hash default password
-/*
-bcrypt.hash(defaultItems[0].password, saltRounds).then((hashedPassword) => {
-  defaultItems[0].password = hashedPassword;
-  console.log("Hash of default password:", hashedPassword);
-});*/
 
 class Users {
   constructor(dbPath = jsonDbPath, items = defaultItems) {
@@ -79,14 +71,11 @@ class Users {
    * @param {object} body - it contains all required data to create a item
    * @returns {Promise} Promise reprensents the item that was created (with id)
    */
-
   async addOne(body) {
     const items = parse(this.jsonDbPath, this.defaultItems);
-
     // hash the password (async call)
     const hashedPassword = await bcrypt.hash(body.password, saltRounds);
     // add new item to the menu
-
     const newitem = {
       username: body.username,
       password: hashedPassword,
@@ -107,7 +96,6 @@ class Users {
     if (foundIndex < 0) return;
     const itemRemoved = items.splice(foundIndex, 1);
     serialize(this.jsonDbPath, items);
-
     return itemRemoved[0];
   }
 
