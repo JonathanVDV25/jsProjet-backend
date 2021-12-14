@@ -6,9 +6,11 @@ GET http://localhost:3000/scores
 ### Read score identified by name jonathan
 GET http://localhost:3000/scores/jonathan
 
+
 ### Create a score
 POST {{baseUrl}}/scores
 Content-Type: application/json
+
 {
     "name":"jonathan",
     "distance":250
@@ -17,14 +19,16 @@ Content-Type: application/json
 ### Update the score identified by the name jonathan
 PUT http://localhost:3000/scores/jonathan
 Content-Type: application/json
+
 {
     "name":"jonathan",
-    "distance":360
+    "distance":410
 }
 
 ### Add a score with dangerous chars
 POST {{baseUrl}}/scores
 Content-Type: application/json
+
 {
     "name":"<img src=\"#\" onerror=\"alert('You have been hacked !')\">",
     "distance":360
