@@ -13,6 +13,7 @@ const defaultScores = [
   },
 ];
 
+
 class Scores {
   constructor(dbPath = jsonDbPath, defaultItems = defaultScores) {
     this.jsonDbPath = dbPath;
