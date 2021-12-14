@@ -8,7 +8,7 @@ const jsonDbPath = __dirname + "/../data/scores.json";
 // Default score menu
 const defaultScores = [
   {
-    name: "Score_De_Base_A_Battre",
+    name: "admin",
     distance: 200,
   },
 ];
