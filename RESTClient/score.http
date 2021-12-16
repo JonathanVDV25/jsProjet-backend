@@ -17,7 +17,7 @@ Content-Type: application/json
 }
 
 ### Update the score identified by the name jonathan
-PUT http://localhost:3000/scores/jonathan
+PUT http://localhost:3000/scores/admin
 Content-Type: application/json
 
 {
