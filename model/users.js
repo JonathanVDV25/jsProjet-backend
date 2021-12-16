@@ -159,11 +159,11 @@ class Users {
    * be created (if username already in use)
    */
 
-  register(username, password) {
+  async register(username, password) {
     const userFound = this.getOneByUsername(username);
     if (userFound) return;
 
-    const newUser = this.addOne({ username: username, password: password });
+    const newUser = await this.addOne({ username: username, password: password });
 
     const authenticatedUser = {
       username: username,
