@@ -1,18 +1,15 @@
 "use strict";
 const { parse, serialize } = require("../utils/json");
 var escape = require("escape-html");
-const { Users } = require("../model/users");
 
 const jsonDbPath = __dirname + "/../data/scores.json";
 
-// Default score menu
 const defaultScores = [
   {
     name: "admin",
     distance: 200,
   },
 ];
-
 
 class Scores {
   constructor(dbPath = jsonDbPath, defaultItems = defaultScores) {
@@ -49,12 +46,10 @@ class Scores {
    */
 
   addOne(body) {
-    const scores = parse(this.jsonDbPath, this.defaultScores);
-
-    // add new score to the menu : escape the title & content in order to protect agains XSS attacks    
+    const scores = parse(this.jsonDbPath, this.defaultScores);    
     const newScore = {
-      name: escape(body.name),
-      distance: escape(body.distance),
+      name: escape(body.name), //escape to prevent XSS attack
+      distance: escape(body.distance), //extra security against good hackers 
     };
     scores.push(newScore);
     serialize(this.jsonDbPath, scores);
@@ -71,11 +66,7 @@ class Scores {
     const scores = parse(this.jsonDbPath, this.defaultScores);
     const foundIndex = scores.findIndex((score) => score.name == name);
     if (foundIndex < 0) return;
-    // create a new object based on the existing score - prior to modification -
-    // and the properties requested to be updated (those in the body of the request)
-    // use of the spread operator to create a shallow copy and repl
     const updatedScore = { ...scores[foundIndex], ...body };
-    // replace the score found at index : (or use splice)
     scores[foundIndex] = updatedScore;
 
     serialize(this.jsonDbPath, scores);

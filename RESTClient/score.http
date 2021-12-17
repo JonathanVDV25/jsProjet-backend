@@ -1,5 +1,3 @@
-@baseUrl = http://localhost:3000
-
 ### Read all scores
 GET http://localhost:3000/scores
 
@@ -8,7 +6,7 @@ GET http://localhost:3000/scores/jonathan
 
 
 ### Create a score
-POST {{baseUrl}}/scores
+POST http://localhost:3000/scores
 Content-Type: application/json
 
 {
@@ -26,7 +24,7 @@ Content-Type: application/json
 }
 
 ### Add a score with dangerous chars
-POST {{baseUrl}}/scores
+POST http://localhost:3000/scores
 Content-Type: application/json
 
 {

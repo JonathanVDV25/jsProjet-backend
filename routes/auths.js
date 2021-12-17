@@ -3,9 +3,9 @@ var router = express.Router();
 const { Users } = require("../model/users");
 const userModel = new Users();
 
-/* Register a user : POST /auths/register */
+// Register user
 router.post("/register", async function (req, res, next) {
-  // Send an error code '400 Bad request' if the body parameters are not valid
+  // Error 400 if the body parameters are not valid
   if (
     !req.body ||
     (req.body.hasOwnProperty("username") && req.body.username.length === 0) ||
@@ -17,19 +17,19 @@ router.post("/register", async function (req, res, next) {
     req.body.username,
     req.body.password
   );
-  // Error code '409 Conflict' if the username already exists
+  // Error 409 if the username already exists
   if (!authenticatedUser) return res.status(409).end();
 
-  // Create the session data (to be put into a cookie)
+  // Create session data for the cookies
   req.session.username = authenticatedUser.username;
   req.session.token = authenticatedUser.token;
 
   return res.json({ username: authenticatedUser.username });
 });
 
-/* login a user : POST /auths/login */
+// login user
 router.post("/login", async function (req, res, next) {
-  // Send an error code '400 Bad request' if the body parameters are not valid
+  //Error 400 if the body parameters are not valid
   if (
     !req.body ||
     (req.body.hasOwnProperty("username") && req.body.username.length === 0) ||
@@ -41,17 +41,17 @@ router.post("/login", async function (req, res, next) {
     req.body.username,
     req.body.password
   );
-  // Error code '401 Unauthorized' if the user could not be authenticated
+  // Error 401 if the user could not be authenticated
   if (!authenticatedUser) return res.status(401).end();
 
-  // Create the session data (to be put into a cookie)
+  // Create session data for the cookies
   req.session.username = authenticatedUser.username;
   req.session.token = authenticatedUser.token;
 
   return res.json({ username: authenticatedUser.username });
 });
 
-/* Logout a user : POST /auths/logout */
+// Logout user
 router.get("/logout", async function (req, res, next) {
   req.session = null;
   return res.status(200).end();
