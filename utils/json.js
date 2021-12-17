@@ -1,4 +1,6 @@
 const fs = require("fs");
+const { syncBuiltinESMExports } = require("module");
+const path = require("path");
 
 /**
  * Parse items given in a .json file
@@ -26,6 +28,9 @@ function parse(filePath, defaultArray = []) {
  * Even if the file exists, its whole content is reset by the given object.
  */
 function serialize(filePath, object) {
+  if(!fs.existsSync("data/")) {
+    fs.mkdirSync("data/");
+  }
   console.log(object);
   const objectSerialized = JSON.stringify(object);
   console.log(objectSerialized);
