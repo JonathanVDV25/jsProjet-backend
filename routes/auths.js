@@ -1,3 +1,5 @@
+const { passwordStrength } = require('check-password-strength');
+
 var express = require("express");
 var router = express.Router();
 const { Users } = require("../model/users");
@@ -12,6 +14,10 @@ router.post("/register", async function (req, res, next) {
     (req.body.hasOwnProperty("password") && req.body.password.length === 0)
   )
     return res.status(400).end();
+
+  // Usage of external module tu ensure the password's strength is at least medium
+  if (passwordStrength(req.body.password).value == "Too weak")
+    return res.status(411).end();
 
   const authenticatedUser = await userModel.register(
     req.body.username,

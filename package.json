@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
+    "check-password-strength": "^2.0.3",
     "cookie-parser": "~1.4.4",
     "cookie-session": "^1.4.0",
     "debug": "~2.6.9",
