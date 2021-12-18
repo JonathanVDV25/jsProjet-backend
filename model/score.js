@@ -7,7 +7,7 @@ const jsonDbPath = __dirname + "/../data/scores.json";
 const defaultScores = [
   {
     name: "admin",
-    distance: 200,
+    distance: "200",
   },
 ];
 

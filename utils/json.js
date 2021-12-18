@@ -28,6 +28,7 @@ function parse(filePath, defaultArray = []) {
  * Even if the file exists, its whole content is reset by the given object.
  */
 function serialize(filePath, object) {
+  // creates a data folder when not exists
   if(!fs.existsSync("data/")) {
     fs.mkdirSync("data/");
   }
