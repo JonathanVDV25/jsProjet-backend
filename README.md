@@ -18,7 +18,6 @@
  - express-generator
  - cookie-session
  - bcrypt
- - HTML 5, CSS 3 and Bootstrap 5
 
  ## How to use our API ?
  - create a project folder
