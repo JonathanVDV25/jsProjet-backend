@@ -14,12 +14,12 @@ Content-Type: application/json
     "distance":250
 }
 
-### Update the score identified by the name jonathan
+### Update the score identified by the name admin
 PUT http://localhost:3000/scores/admin
 Content-Type: application/json
 
 {
-    "name":"jonathan",
+    "name":"admin",
     "distance":410
 }
 
